@@ -46,4 +46,24 @@ module.exports = class AuthService {
         }
     }
 
+    async signIn({ email, password }) {
+        const recode = await User.findOne({ email });
+
+        if (!recode) throw new Error('User not registered');
+
+        const isValid = await argon2.verify(recode.password, password);
+
+        console.log(isValid);
+
+        if (isValid) {
+            const token = this.getToken(recode);
+
+            const user = recode.toObject();
+
+            return { user, token };
+        } else {
+            throw new Error("Invalied password");
+        }
+    }
+
 }
