@@ -16,10 +16,10 @@
 
 * 서버가 실행되기 전에 로딩되어야 하는것들을 먼저 폴더로 묶어서 로딩시켜주었다.
  
- > mongoose : mongo db connect
- > agenda : node js의 작업관리자 역할 (이 부분은 더 공부해서 추가 할 예정)
+ * mongoose : mongo db connect
+ * agenda : node js의 작업관리자 역할 (이 부분은 더 공부해서 추가 할 예정)
  
- >> 사용 API : mongoose, agenda
+ > 사용 API : mongoose, agenda
 ---
 
 ### 3. services 
@@ -27,9 +27,9 @@
 * 서버가 제공하는 서비스들을 모아놓았다. 객체화 시켜서 제공한다.
 * routes는 데이터를 받고 전달하는 역할만 놔두기위해 분리시켰다.
 
- > auth : 사용자 로그인, 로그아웃 관리
+ * auth : 사용자 로그인, 로그아웃 관리
  
- >> 사용 API : crypto, argon2, jsonwebtoken
+ > 사용 API : crypto, argon2, jsonwebtoken
 
 ---
 
