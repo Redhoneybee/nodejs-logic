@@ -2,10 +2,18 @@ const express = require("express");
 const AuthService = require('../services/auth');
 const router = express.Router();
 
-router.post('/signin', (req, res, next) => {
-    const { email, password } = req.body;
+router.post('/signin', async (req, res, next) => {
+    try {
+        const { email, password } = req.body;
 
-    console.log(email, password);
+        const authServiceInstance = new AuthService();
+
+        const { user, token } = await authServiceInstance.signIn({ email, password });
+
+        res.status(200).json({ user, token });
+    } catch (err) {
+        next(err);
+    }
 });
 
 router.post('/signup', async (req, res, next) => {
@@ -22,9 +30,6 @@ router.post('/signup', async (req, res, next) => {
         };
 
         const { user, token } = await authServiceInstance.signUp(userDTO);
-
-        console.log(user);
-        console.log(token);
 
         res.status(201).json({ user, token });
     } catch (err) {
