@@ -5,6 +5,7 @@ module.exports = {
     db_url: `mongodb+srv://${process.env.DBUSER}:${process.env.DBPASS}@node-logic.xdph6.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`,
     agenda: {
         dbCollection: process.env.AGENDACOLLECTION
-    }
+    },
+    jwt_secret: process.env.JWTKEY
 
 }
